@@ -1,0 +1,177 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Allerta', sans-serif;
+}
+
+::selection {
+  background-color:rgba(128, 128, 128, 0.15);
+}
+
+:root {
+  --body-bc: #fff;
+  --primary-color: rgb(1, 49, 1);
+  --secondary-color: #37e288;
+  --extra-color: rgba(196, 255, 196, 0.384);
+  --extra-bc: rgba(128, 128, 128, 0.164);
+  --line-width: 0%;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* header styling */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--extra-bc);
+  padding: 1rem 0.6rem;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 7.5vh;
+}
+
+.header .menu i{
+  font-size: 1.4rem;
+  color: var(--primary-color);
+  background-color: var(--extra-bc);
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+.header .donate button {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  padding: 4px 12px;
+  border-radius: 20px;
+  outline: none;
+  border: 2px solid var(--secondary-color);
+  font-size: 1rem;
+  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.header .donate button:hover {
+  border: 2px solid rgb(1, 49, 1) !important;
+}
+
+.header .donate button span {
+  margin-right: 0.4rem;
+}
+
+/* main section styling */
+
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 87.5vh;
+}
+
+.main .container {
+  text-align: center;
+}
+
+.main .container figure {
+  margin-bottom: 5rem;
+}
+
+.main .container img {
+  background-color: var(--extra-color);
+  width: 240px;
+  border-radius: 50%;
+  box-shadow: 2px 2px 4px 1px rgba(128, 128, 128, 0.527);
+}
+
+.main .container figure figcaption .title {
+  font-weight: bold;
+  color: var(--secondary-color);
+  margin-top: 26px;
+  display: inline-block;
+}
+
+.main .container figure figcaption .title::after {
+  content: "";
+  position: relative;
+  display: block;
+  bottom: 16px;
+  left: 0;
+  width: var(--line-width);
+  height: 2px;
+  background-color: var(--secondary-color);
+  transition: all 3.2s ease;
+}
+
+.main .container figure figcaption .title:hover::after {
+  width: var(--line-width);
+}
+
+.main .container figure p {
+  line-height: 1.6;
+  color: var(--primary-color);
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.main .container .get-started button {
+  padding: 0.8rem 1.6rem;
+  border-radius: 1rem;
+  outline: none;
+  border: 2px solid var(--extra-color);
+  color: var(--secondary-color);
+  background-color: var(--extra-color);
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.main .container .get-started button span {
+  margin-right: 0.5rem;
+}
+
+.main .container .get-started button:hover {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+}
+
+/* footer styling */
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  background-color: var(--extra-color);
+  color: var(--primary-color);
+  font-size: 0.84rem;
+  font-weight: bold;
+  border-top: 1px solid var(--extra-bc);
+  height: 5vh;
+}
+
+.footer i {
+  color:rgb(1, 49, 1);
+  padding: 8px;
+}
+
+.footer .bar {
+  position: relative;
+  left: 5px;
+  bottom: 2px;
+}
+
