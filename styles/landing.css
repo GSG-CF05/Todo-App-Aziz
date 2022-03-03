@@ -14,6 +14,7 @@
   --extra-color: rgba(196, 255, 196, 0.384);
   --extra-bc: rgba(128, 128, 128, 0.164);
   --line-width: 0%;
+  --tran-value: 40px;
 }
 
 button {
@@ -42,7 +43,7 @@ a {
 .header .menu i{
   font-size: 1.4rem;
   color: var(--primary-color);
-  background-color: var(--extra-bc);
+  background-color: var(--extra-color);
   padding: 0.5rem;
   border-radius: 4px;
 }
@@ -62,7 +63,7 @@ a {
 }
 
 .header .donate button:hover {
-  border: 2px solid rgb(1, 49, 1) !important;
+  border: 2px solid rgb(1, 49, 1);
 }
 
 .header .donate button span {
@@ -90,7 +91,27 @@ a {
   background-color: var(--extra-color);
   width: 240px;
   border-radius: 50%;
-  box-shadow: 2px 2px 4px 1px rgba(128, 128, 128, 0.527);
+  animation-delay: 0.2s;
+  animation-duration: 2s;
+  animation-fill-mode: both;
+}
+
+@keyframes fadeRight {
+  from {
+    opacity: 0;
+    transform: translateX(var(--tran-value));
+    box-shadow: 2px 2px 4px 1px rgba(128, 128, 128, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    box-shadow: 2px 2px 4px 1px rgba(128, 128, 128, 0.527);
+
+  }
+}
+
+.fade-right {
+  animation-name: fadeRight;
 }
 
 .main .container figure figcaption .title {
@@ -109,7 +130,8 @@ a {
   width: var(--line-width);
   height: 2px;
   background-color: var(--secondary-color);
-  transition: all 3.2s ease;
+  transition: all 3s ease;
+  transition-delay: 0.5s;
 }
 
 .main .container figure figcaption .title:hover::after {
@@ -175,3 +197,8 @@ a {
   bottom: 2px;
 }
 
+@media (min-width: 1200px) {
+  :root {
+    --tran-value: 80px;
+  }
+}
