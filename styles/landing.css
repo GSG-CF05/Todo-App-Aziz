@@ -172,6 +172,6 @@
 
 @media (min-width: 1200px) {
   :root {
-    --tran-value: 80px;
+    --translate-value: 80px;
   }
 }
