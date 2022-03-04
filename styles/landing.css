@@ -72,7 +72,7 @@
 @keyframes fadeRight {
   from {
     opacity: 0;
-    transform: translateX(var(--tran-value));
+    transform: translateX(var(--translate-value));
     box-shadow: 2px 2px 4px 1px rgba(128, 128, 128, 0);
   }
   to {

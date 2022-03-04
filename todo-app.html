@@ -18,26 +18,26 @@
     <div class="container">
       <div class="filter-tasks">
         <h3>Filter Tasks</h3>
-        <img src="images/filter.png" width="20px" height="20px" alt="">        
+        <img src="images/filter.png" width="20px" alt="">        
       </div>
       <ul>
         <li class="active">
           <div class="item">
-            <img src="images/tasks.png" alt="" width="20px" height="20px">
+            <img src="images/tasks.png" alt="" width="18px">
             <span class="item-name">All Tasks</span> 
           </div>
           <span class="count">7</span>
         </li>
         <li>
           <div class="item">
-            <img src="images/completed.png" alt="" width="20px" height="20px">
+            <img src="images/completed.png" alt="" width="20px">
             <span class="item-name">Completed</span> 
           </div>
           <span class="count">5</span>
         </li>
         <li>
           <div class="item">
-            <img src="images/uncompleted.png" alt="" width="20px" height="20px">
+            <img src="images/uncompleted.png" alt="" width="20px">
             <span class="item-name">Uncompleted</span> 
           </div>
           <span class="count">2</span>
@@ -45,83 +45,86 @@
       </ul>
     </div>
   </nav>
-  <div class="header">
-    <div class="menu">
-      <i class="fa-solid fa-bars"></i>
+  <div class="page-container">
+    <div></div>
+    <div class="header">
+      <div class="menu">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+      <div class="logo">
+        <a class="go-home" href="index.html">
+          <img src="images/check-mark.svg" width="34px" alt="">
+          <span>Get it <span class="done">Done!</span></span>
+        </a>
+      </div>
+      <div class="logo">
+        <img src="images/check-mark.svg" width="34px" alt="">
+      </div>
     </div>
-    <div class="logo">
-      <img src="images/check-mark.svg" width="34px" alt="">
-      <a href="index.html">
-        <span>Get it <span class="done">Done!</span></span>
-      </a>
-    </div>
-    <div class="logo">
-      <img src="images/check-mark.svg" width="34px" alt="">
-    </div>
-  </div>
-  <main class="main">
-    <div class="container">
-      <h2 class="title">
-        <i class="fa-solid fa-list-check"></i>
-        <span>All Tasks:</span>
-        <span class="count">7</span>
-      </h2>
-      <div class="tasks-container">
-        <form class="form">
-          <div class="task-adder">
-           <button class="add-task">
-              <i class="fa-solid fa-plus"></i>
-            </button>
-            <input type="text" placeholder="Add a Task">
-          </div>
-        </form>
-        <div class="task">
-          <div class="task-content">
-            <div class="status"></div>
-            <div class="task-text">Do the dishes</div>
-          </div>
-          <div class="task-controls">
-            <div class="edit">
-              <i class="fa-solid fa-pen"></i>
+    <main class="main">
+      <div class="container">
+        <h2 class="title">
+          <i class="fa-solid fa-list-check"></i>
+          <span>All Tasks:</span>
+          <span class="count">7</span>
+        </h2>
+        <div class="tasks-container">
+          <form class="form">
+            <div class="task-adder">
+            <button class="add-task">
+                <i class="fa-solid fa-plus"></i>
+              </button>
+              <input type="text" placeholder="Add a Task">
             </div>
-            <div class="delete">
-              <i class="fa-solid fa-trash"></i>
+          </form>
+          <div class="task">
+            <div class="task-content">
+              <div class="status"></div>
+              <div class="task-text">Do the dishes</div>
+            </div>
+            <div class="task-controls">
+              <div class="edit">
+                <i class="fa-solid fa-pen"></i>
+              </div>
+              <div class="delete">
+                <i class="fa-solid fa-trash"></i>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="task">
-          <div class="task-content">
-            <div class="status">
-              <i class="fa-solid fa-check"></i>
+          <div class="task">
+            <div class="task-content">
+              <div class="status">
+                <i class="fa-solid fa-check"></i>
+              </div>
+              <div class="task-text">Study for the midterm</div>
             </div>
-            <div class="task-text">Study for the midterm</div>
+            <div class="task-controls">
+              <div class="edit">
+                <i class="fa-solid fa-pen"></i>
+              </div>
+              <div class="delete">
+                <i class="fa-solid fa-trash"></i>
+              </div>
+            </div>
           </div>
-          <div class="task-controls">
-            <div class="edit">
-              <i class="fa-solid fa-pen"></i>
+          <div class="task">
+            <div class="task-content">
+              <div class="status"></div>
+              <div class="task-text">Waste some time</div>
             </div>
-            <div class="delete">
-              <i class="fa-solid fa-trash"></i>
-            </div>
-          </div>
-        </div>
-        <div class="task">
-          <div class="task-content">
-            <div class="status"></div>
-            <div class="task-text">Waste some time</div>
-          </div>
-          <div class="task-controls">
-            <div class="edit">
-              <i class="fa-solid fa-pen"></i>
-            </div>
-            <div class="delete">
-              <i class="fa-solid fa-trash"></i>
+            <div class="task-controls">
+              <div class="edit">
+                <i class="fa-solid fa-pen"></i>
+              </div>
+              <div class="delete">
+                <i class="fa-solid fa-trash"></i>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </main>
+    </main>
+  </div>
   <script src="js/toggle-navbar.js"></script>
   <script src="js/todo-app.js"></script>
 </body>
