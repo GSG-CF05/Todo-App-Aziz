@@ -208,6 +208,10 @@
   transition: all 0.5s ease;
 }
 
+.main .container .tasks-container .tasks-list .task .task-controls i {
+  pointer-events: none;
+}
+
 .main .container .tasks-container .tasks-list .task .task-controls,
 .main .container .tasks-container .tasks-list .task .task-content {
   display: flex;
