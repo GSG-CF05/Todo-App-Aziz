@@ -47,14 +47,14 @@
                                <div class="task-text">${task.taskName}</div>
                              </div>
                              <div class="task-controls">
-                             <div class="edit">
-                               <i class="fa-solid fa-pen"></i>
-                             </div>
-                             <div class="delete">
-                               <i class="fa-solid fa-trash"></i>
-                             </div>
+                              <div class="edit">
+                                <i class="fa-solid fa-pen"></i>
+                              </div>
+                              <div class="delete">
+                                <i class="fa-solid fa-trash"></i>
+                              </div>
                            </div>`;
-		taskElement.setAttribute('data-id', task.id);
+    taskElement.dataset.id = task.id;
 		tasksList.appendChild(taskElement);
 	}
 
@@ -64,4 +64,27 @@
 		tasks.push(task);
 		localStorage.setItem('tasks', JSON.stringify(tasks));
 	}
+
+  /* Delete Task Logic */
+
+  tasksList.addEventListener("click", (e) => {
+    if(e.target.classList.contains("delete")) deleteTask(e);
+    else if(e.target.classList.contains("edit")) editTask(e);
+  });
+
+  function deleteTask(e) {
+    removeTaskFromPage(e);
+    removeTaskFromLocalStorage(e.target.parentElement.parentElement.dataset.id);
+  }
+
+  function removeTaskFromPage(e) {
+    e.target.parentElement.parentElement.remove();
+  }
+
+  function removeTaskFromLocalStorage(taskId) {
+    let tasks = JSON.parse(localStorage.getItem("tasks"));
+    tasks = tasks.filter((task) => task.id != taskId);
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }
+
 })();
