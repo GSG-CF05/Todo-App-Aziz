@@ -1,0 +1,31 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Allerta', sans-serif;
+}
+
+::selection {
+  background-color:rgba(128, 128, 128, 0.15);
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  margin: 0;
+}
+
+:root {
+  --body-bc: #fff;
+  --primary-color: rgb(1, 49, 1);
+  --secondary-color: #37e288;
+  --extra-color: rgba(196, 255, 196, 0.384);
+  --extra-bc: rgba(128, 128, 128, 0.164);
+  --line-width: 0%;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
