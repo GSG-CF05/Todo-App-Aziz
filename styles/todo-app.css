@@ -218,15 +218,36 @@
 }
 
 .main .container .tasks-container .tasks-list .task .task-content .task-text {
-  flex-basis: 97%;
+  flex-basis: 96%;
   word-break: break-all;
 }
 
-.main .container .tasks-container .tasks-list .task .task-controls i {
+.main .container .tasks-container .tasks-list .task .task-controls i,
+.main .container .tasks-container .tasks-list .task .task-controls span {
   pointer-events: none;
 }
 
-.main .container .tasks-container .tasks-list .task .task-controls,
+.main .container .tasks-container .tasks-list .task .task-controls .save {
+  background-color: #e4e4e4;
+  border-radius: 40px;
+  padding: 3px 7px;
+  transition: all 0.5s ease;
+}
+
+.main .container .tasks-container .tasks-list .task .task-controls .save:hover {
+  background-color: #dadada;
+}
+
+.main .container .tasks-container .tasks-list .task .task-controls .save.hidden {
+  display: none;
+}
+
+.main .container .tasks-container .tasks-list .task .task-controls {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
 .main .container .tasks-container .tasks-list .task .task-content {
   display: flex;
   gap: 0.5rem;
