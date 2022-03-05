@@ -52,7 +52,7 @@
                               <div class="save hidden">
                                 <span>save</span>
                               </div>
-                              <div class="edit">
+                              <div class="edit ${task.completed ? "disabled" : ""}">
                                 <i class="fa-solid fa-pen"></i>
                               </div>
                               <div class="delete">
@@ -158,6 +158,8 @@
 
   function completeTask(e) {
     const taskElement = e.target.parentElement.parentElement;
+    const editBtn = e.target.parentElement.parentElement.children[1].children[1];
+    disableBtn(editBtn);
     checkTask(e);
     updateTaskStatusInLocalStorage(taskElement.dataset.id, true);
     
@@ -168,6 +170,10 @@
     checkMark.classList.remove("hidden");
     const taskTextElement = e.target.parentElement.children[1];
     taskTextElement.classList.add("completed");
+  }
+
+  function disableBtn(btn) {
+    btn.classList.add("disabled");
   }
 
 })();
