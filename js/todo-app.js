@@ -47,6 +47,9 @@
                                <div class="task-text">${task.taskName}</div>
                              </div>
                              <div class="task-controls">
+                              <div class="save hidden">
+                                <span>save</span>
+                              </div>
                               <div class="edit">
                                 <i class="fa-solid fa-pen"></i>
                               </div>
@@ -70,6 +73,7 @@
   tasksList.addEventListener("click", (e) => {
     if(e.target.classList.contains("delete")) deleteTask(e);
     else if(e.target.classList.contains("edit")) editTask(e);
+    else if(e.target.classList.contains("save")) saveTask(e);
   });
 
   function deleteTask(e) {
@@ -85,6 +89,50 @@
     let tasks = JSON.parse(localStorage.getItem("tasks"));
     tasks = tasks.filter((task) => task.id != taskId);
     localStorage.setItem("tasks", JSON.stringify(tasks));
+  }
+
+  /* Edit Task Logic */ 
+
+  function editTask(e) {
+    makeTaskEditable(e, true);
+    // updateTaskInLocalStorage(e, taskName); // use closue and function factories lesson concepts for function overloading (one for name and another for completed) 
+    // the updateTaskInLocalStorage(e, taskName) function should be invoked inside saveTask(e) function
+    showSaveBtn(e);
+  }
+
+  function makeTaskEditable(e, editable) {
+    const task = e.target.parentElement.parentElement;
+    const taskTextField = task.firstChild.children[1];
+    taskTextField.setAttribute("contenteditable", `${editable}`);
+    task.firstChild.children[1].focus();
+    document.querySelector('.task').focus();
+  }
+
+  function showSaveBtn(e) {
+    e.target.parentElement.children[0].classList.remove("hidden");
+  }
+
+  /* Save Task Logic */
+  
+  function saveTask(e) {
+    const taskElement = e.target.parentElement.parentElement;
+    makeTaskEditable(e, false);
+    const newTaskName = taskElement.children[0].children[1].innerText;
+    updateTaskInLocalStorage(taskElement.dataset.id, newTaskName);
+    hideSaveBtn(e);
+  }
+
+  function updateTaskInLocalStorage(taskId, taskName) {
+    let tasks = JSON.parse(localStorage.getItem("tasks"));
+    for(let i = 0; i < tasks.length; i++) {
+      if(tasks[i].id == taskId)
+        tasks[i].taskName = taskName;
+    }
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }
+
+  function hideSaveBtn(e) {
+    e.target.parentElement.children[0].classList.add("hidden")
   }
 
 })();
