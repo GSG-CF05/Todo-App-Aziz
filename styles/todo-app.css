@@ -215,6 +215,12 @@
 .main .container .tasks-container .tasks-list .task .task-content .task-text {
   border: none;
   outline: none;
+  transition: all 1s ease;
+}
+
+.main .container .tasks-container .tasks-list .task .task-content .task-text.completed {
+  text-decoration: line-through;
+  opacity: 0.4;
 }
 
 .main .container .tasks-container .tasks-list .task .task-content .task-text {
@@ -223,7 +229,8 @@
 }
 
 .main .container .tasks-container .tasks-list .task .task-controls i,
-.main .container .tasks-container .tasks-list .task .task-controls span {
+.main .container .tasks-container .tasks-list .task .task-controls span,
+.main .container .tasks-container .tasks-list .task .task-content .status i {
   pointer-events: none;
 }
 
@@ -238,7 +245,8 @@
   background-color: #dadada;
 }
 
-.main .container .tasks-container .tasks-list .task .task-controls .save.hidden {
+.main .container .tasks-container .tasks-list .task .task-controls .save.hidden, 
+.main .container .tasks-container .tasks-list .task .task-content .status i.hidden  {
   display: none;
 }
 

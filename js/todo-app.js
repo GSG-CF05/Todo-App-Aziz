@@ -43,8 +43,10 @@
 		const taskElement = document.createElement('div');
 		taskElement.classList.add('task');
 		taskElement.innerHTML = `<div class="task-content">
-                               <div class="status"></div>
-                               <div class="task-text">${task.taskName}</div>
+                               <div class="status">
+                                <i class="fa-solid fa-check ${!task.completed ? "hidden" : ""}"></i>
+                               </div>
+                               <div class="task-text ${task.completed ? "completed" : ""}">${task.taskName}</div>
                              </div>
                              <div class="task-controls">
                               <div class="save hidden">
@@ -74,6 +76,7 @@
     if(e.target.classList.contains("delete")) deleteTask(e);
     else if(e.target.classList.contains("edit")) editTask(e);
     else if(e.target.classList.contains("save")) saveTask(e);
+    else if(e.target.classList.contains("status")) completeTask(e);
   });
 
   function deleteTask(e) {
@@ -94,10 +97,11 @@
   /* Edit Task Logic */ 
 
   function editTask(e) {
-    makeTaskEditable(e, true);
-    // updateTaskInLocalStorage(e, taskName); // use closue and function factories lesson concepts for function overloading (one for name and another for completed) 
-    // the updateTaskInLocalStorage(e, taskName) function should be invoked inside saveTask(e) function
-    showSaveBtn(e);
+    const taskTextElement = e.target.parentElement.parentElement.children[0].children[1];
+    if(!taskTextElement.classList.contains("completed")) {
+      makeTaskEditable(e, true);
+      showSaveBtn(e);
+    }
   }
 
   function makeTaskEditable(e, editable) {
@@ -112,27 +116,58 @@
     e.target.parentElement.children[0].classList.remove("hidden");
   }
 
+  /* Function factory to implement/mimic function overloading*/
+
+  function createUpdateTaskInLocalStorageFunction(propertyName) {
+    return function(taskId, propertyValue) {
+      let tasks = JSON.parse(localStorage.getItem("tasks"));
+      if(propertyName == "taskName") {
+        for(let i = 0; i < tasks.length; i++) {
+          if(tasks[i].id == taskId)
+            tasks[i].taskName = propertyValue;
+        }
+      }
+      else if(propertyName == "taskStatus") {
+        for(let i = 0; i < tasks.length; i++) {
+          if(tasks[i].id == taskId)
+            tasks[i].completed = propertyValue;
+        }
+      }
+      localStorage.setItem("tasks", JSON.stringify(tasks));  
+    }
+  }
+
+  let updateTaskNameInLocalStorage = createUpdateTaskInLocalStorageFunction("taskName");
+  let updateTaskStatusInLocalStorage = createUpdateTaskInLocalStorageFunction("taskStatus");
+
   /* Save Task Logic */
   
   function saveTask(e) {
     const taskElement = e.target.parentElement.parentElement;
     makeTaskEditable(e, false);
     const newTaskName = taskElement.children[0].children[1].innerText;
-    updateTaskInLocalStorage(taskElement.dataset.id, newTaskName);
+    updateTaskNameInLocalStorage(taskElement.dataset.id, newTaskName);
     hideSaveBtn(e);
-  }
-
-  function updateTaskInLocalStorage(taskId, taskName) {
-    let tasks = JSON.parse(localStorage.getItem("tasks"));
-    for(let i = 0; i < tasks.length; i++) {
-      if(tasks[i].id == taskId)
-        tasks[i].taskName = taskName;
-    }
-    localStorage.setItem("tasks", JSON.stringify(tasks));
   }
 
   function hideSaveBtn(e) {
     e.target.parentElement.children[0].classList.add("hidden")
+  }
+
+  /* Complete Task Logic*/
+
+  function completeTask(e) {
+    const taskElement = e.target.parentElement.parentElement;
+    checkTask(e);
+    updateTaskStatusInLocalStorage(taskElement.dataset.id, true);
+    
+  }
+
+  function checkTask(e) {
+    const checkMark = e.target.children[0];
+    checkMark.classList.remove("hidden");
+    const taskTextElement = e.target.parentElement.children[1];
+    taskTextElement.classList.add("completed");
   }
 
 })();
