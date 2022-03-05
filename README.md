@@ -15,7 +15,7 @@
 
 ## App Sketch
 
-![](https://ibb.co/QYfWK6W)
+<img src="images/sketch.jpg"/>
 
 ## Live Link
 You can check out the project: [HERE](https://gsg-cf05.github.io/Todo-App-Aziz/index.html)
