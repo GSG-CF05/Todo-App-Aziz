@@ -97,16 +97,12 @@
   /* Edit Task Logic */ 
 
   function editTask(e) {
-    const taskTextElement = e.target.parentElement.parentElement.children[0].children[1];
-    if(!taskTextElement.classList.contains("completed")) {
-      makeTaskEditable(e, true);
-      showSaveBtn(e);
-      const completedBtn = e.target.parentElement.parentElement.children[0].children[0];
-      toggleBtnStatus(completedBtn);
-      const editBtn = e.target;
-      toggleBtnStatus(editBtn);
-
-    }
+    makeTaskEditable(e, true);
+    showSaveBtn(e);
+    const completedBtn = e.target.parentElement.parentElement.children[0].children[0]; 
+    toggleBtnStatus(completedBtn); // deactivate check task button
+    const editBtn = e.target;
+    toggleBtnStatus(editBtn); // // deactivate edit task button
   }
 
   function makeTaskEditable(e, editable) {
@@ -163,9 +159,9 @@
     updateTaskNameInLocalStorage(taskElement.dataset.id, newTaskName);
     hideSaveBtn(e);
     const completedBtn = e.target.parentElement.parentElement.children[0].children[0];
-    toggleBtnStatus(completedBtn);
+    toggleBtnStatus(completedBtn); // activate check task button
     const editBtn = e.target.parentElement.children[1];
-    toggleBtnStatus(editBtn);
+    toggleBtnStatus(editBtn); // activate edit task button
   }
 
   function hideSaveBtn(e) {
@@ -178,10 +174,11 @@
     const taskElement = e.target.parentElement.parentElement;
     checkTask(e);
     updateTaskStatusInLocalStorage(taskElement.dataset.id, true);
-    const editBtn = e.target.parentElement.parentElement.children[1].children[1];
-    toggleBtnStatus(editBtn);
     const completedBtn = e.target.parentElement.parentElement.children[0].children[0];
-    toggleBtnStatus(completedBtn);
+    toggleBtnStatus(completedBtn); // deactivate check task button
+    const editBtn = e.target.parentElement.parentElement.children[1].children[1];
+    toggleBtnStatus(editBtn); // deactivate edit task button
+
   }
 
   function checkTask(e) {
