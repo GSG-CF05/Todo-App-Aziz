@@ -27,7 +27,6 @@
     } else {
       taskSelection = "all";
     }
-    console.log(taskSelection)
     activateTaskSelection(taskSelection);
     showRequestedTasks(taskSelection);
 	}
