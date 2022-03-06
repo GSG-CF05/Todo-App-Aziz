@@ -157,7 +157,7 @@
       let tasks = JSON.parse(localStorage.getItem("tasks"));
       if(propertyName == "taskName") {
         for(let i = 0; i < tasks.length; i++) {
-          if(tasks[i].id == taskId)
+          if(tasks[i].hasOwnProperty(taskName) && tasks[i].id == taskId)
             tasks[i].taskName = propertyValue;
         }
       }
