@@ -232,7 +232,8 @@
 
 .main .container .tasks-container .tasks-list .task .task-controls i,
 .main .container .tasks-container .tasks-list .task .task-controls span,
-.main .container .tasks-container .tasks-list .task .task-content .status i {
+.main .container .tasks-container .tasks-list .task .task-content .status i,
+.main .container .tasks-container .tasks-list .task .task-controls .save span {
   pointer-events: none;
 }
 
