@@ -101,6 +101,11 @@
     if(!taskTextElement.classList.contains("completed")) {
       makeTaskEditable(e, true);
       showSaveBtn(e);
+      const completedBtn = e.target.parentElement.parentElement.children[0].children[0];
+      toggleBtnStatus(completedBtn);
+      const editBtn = e.target;
+      toggleBtnStatus(editBtn);
+
     }
   }
 
@@ -108,6 +113,7 @@
     const task = e.target.parentElement.parentElement;
     const taskTextField = task.firstChild.children[1];
     taskTextField.setAttribute("contenteditable", `${editable}`);
+
     // make the cursor at the end of the task text on edit
     const inputText = taskTextField.innerText;
     const range = document.createRange();
@@ -131,13 +137,13 @@
       let tasks = JSON.parse(localStorage.getItem("tasks"));
       if(propertyName == "taskName") {
         for(let i = 0; i < tasks.length; i++) {
-          if(tasks[i].id == taskId)
+          if(tasks[i].taskName && tasks[i].id == taskId)
             tasks[i].taskName = propertyValue;
         }
       }
       else if(propertyName == "taskStatus") {
         for(let i = 0; i < tasks.length; i++) {
-          if(tasks[i].id == taskId)
+          if(tasks[i].completed && tasks[i].id == taskId)
             tasks[i].completed = propertyValue;
         }
       }
@@ -156,6 +162,10 @@
     const newTaskName = taskElement.children[0].children[1].innerText;
     updateTaskNameInLocalStorage(taskElement.dataset.id, newTaskName);
     hideSaveBtn(e);
+    const completedBtn = e.target.parentElement.parentElement.children[0].children[0];
+    toggleBtnStatus(completedBtn);
+    const editBtn = e.target.parentElement.children[1];
+    toggleBtnStatus(editBtn);
   }
 
   function hideSaveBtn(e) {
@@ -167,7 +177,7 @@
   function completeTask(e) {
     const taskElement = e.target.parentElement.parentElement;
     const editBtn = e.target.parentElement.parentElement.children[1].children[1];
-    disableBtn(editBtn);
+    toggleBtnStatus(editBtn);
     checkTask(e);
     updateTaskStatusInLocalStorage(taskElement.dataset.id, true);
     
@@ -180,8 +190,9 @@
     taskTextElement.classList.add("completed");
   }
 
-  function disableBtn(btn) {
-    btn.classList.add("non-active");
+  function toggleBtnStatus(btn) {
+    btn.classList.toggle("non-active");
+
   }
 
 })();
