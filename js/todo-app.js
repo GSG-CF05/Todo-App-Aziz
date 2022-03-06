@@ -153,15 +153,18 @@
   /* Save Task Logic */
   
   function saveTask(e) {
-    const taskElement = e.target.parentElement.parentElement;
-    makeTaskEditable(e, false);
-    const newTaskName = taskElement.children[0].children[1].innerText;
-    updateTaskNameInLocalStorage(taskElement.dataset.id, newTaskName);
-    hideSaveBtn(e);
-    const completedBtn = e.target.parentElement.parentElement.children[0].children[0];
-    toggleBtnStatus(completedBtn); // activate check task button
-    const editBtn = e.target.parentElement.children[1];
-    toggleBtnStatus(editBtn); // activate edit task button
+    const taskTextElement = e.target.parentElement.parentElement.children[0].children[1];
+    if(taskTextElement.innerText) {
+      const taskElement = e.target.parentElement.parentElement;
+      makeTaskEditable(e, false);
+      const newTaskName = taskElement.children[0].children[1].innerText;
+      updateTaskNameInLocalStorage(taskElement.dataset.id, newTaskName);
+      hideSaveBtn(e);
+      const completedBtn = e.target.parentElement.parentElement.children[0].children[0];
+      toggleBtnStatus(completedBtn); // activate check task button
+      const editBtn = e.target.parentElement.children[1];
+      toggleBtnStatus(editBtn); // activate edit task button
+    }
   }
 
   function hideSaveBtn(e) {
