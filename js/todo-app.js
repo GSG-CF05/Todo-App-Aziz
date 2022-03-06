@@ -52,7 +52,7 @@
                               <div class="save hidden">
                                 <span>save</span>
                               </div>
-                              <div class="edit ${task.completed ? "disabled" : ""}">
+                              <div class="edit ${task.completed ? "non-active" : ""}">
                                 <i class="fa-solid fa-pen"></i>
                               </div>
                               <div class="delete">
@@ -181,8 +181,7 @@
   }
 
   function disableBtn(btn) {
-    btn.classList.add("disabled");
-    btn.style.opacity = "0.4";
+    btn.classList.add("non-active");
   }
 
 })();

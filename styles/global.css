@@ -31,7 +31,12 @@ a {
   text-decoration: none;
 }
 
-.disabled {
+.disabled, 
+.non-active {
   pointer-events: none;
+}
+
+.non-active {
+  opacity: 0.4;
 }
 
