@@ -137,13 +137,13 @@
       let tasks = JSON.parse(localStorage.getItem("tasks"));
       if(propertyName == "taskName") {
         for(let i = 0; i < tasks.length; i++) {
-          if(tasks[i].taskName && tasks[i].id == taskId)
+          if(tasks[i].id == taskId)
             tasks[i].taskName = propertyValue;
         }
       }
       else if(propertyName == "taskStatus") {
         for(let i = 0; i < tasks.length; i++) {
-          if(tasks[i].completed && tasks[i].id == taskId)
+          if(tasks[i].id == taskId)
             tasks[i].completed = propertyValue;
         }
       }
