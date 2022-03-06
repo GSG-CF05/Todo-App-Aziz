@@ -108,8 +108,16 @@
     const task = e.target.parentElement.parentElement;
     const taskTextField = task.firstChild.children[1];
     taskTextField.setAttribute("contenteditable", `${editable}`);
-    task.firstChild.children[1].focus();
-    document.querySelector('.task').focus();
+    // make the cursor at the end of the task text on edit
+    const inputText = taskTextField.innerText;
+    const range = document.createRange();
+    const selection = document.getSelection();
+    range.setStart(taskTextField.childNodes[0], inputText.length);
+    range.collapse(true);
+    selection.removeAllRanges();
+    selection.addRange(range);
+
+    taskTextField.focus();
   }
 
   function showSaveBtn(e) {
@@ -174,6 +182,7 @@
 
   function disableBtn(btn) {
     btn.classList.add("disabled");
+    btn.style.opacity = "0.4";
   }
 
 })();
