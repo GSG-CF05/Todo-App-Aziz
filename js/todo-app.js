@@ -6,6 +6,8 @@
   const tasksCountNavElement = document.querySelector(".navbar .container ul .all .count");
   const completedTasksCountNavElement = document.querySelector(".navbar .container ul .completed .count");
   const uncompletedTasksCountNavElement = document.querySelector(".navbar .container ul .uncompleted .count");
+  const tasksSelectionsListItems = document.querySelectorAll(".navbar .container ul li");
+  const tasksShownElement = document.querySelector(".main .container .title .shown-tasks");
 
 	/* Read Tasks from Local Storage on Page Load */
 
@@ -18,6 +20,16 @@
       updateTasksCountOnPage();
       updateCompletedTasksCountOnPage();
 		}
+
+    let taskSelection = "";
+    if(localStorage.getItem("tasksSelection")) {
+      taskSelection = localStorage.getItem("tasksSelection");
+    } else {
+      taskSelection = "all";
+    }
+    console.log(taskSelection)
+    activateTaskSelection(taskSelection);
+    showRequestedTasks(taskSelection);
 	}
 
 	/* Add Task Logic */
@@ -37,6 +49,7 @@
 		saveTasktoLocalStorage(task);
     updateTasksCountOnPage();
     updateCompletedTasksCountOnPage();
+    showRequestedTasks(localStorage.getItem("tasksSelection"));
 	}
 
 	function createTask(taskName) {
@@ -92,6 +105,8 @@
     removeTaskFromLocalStorage(e.target.parentElement.parentElement.dataset.id);
     updateTasksCountOnPage();
     updateCompletedTasksCountOnPage();
+    showRequestedTasks(localStorage.getItem("tasksSelection"));
+
   }
 
   function removeTaskFromPage(e) {
@@ -192,6 +207,7 @@
     const editBtn = e.target.parentElement.parentElement.children[1].children[1];
     toggleBtnStatus(editBtn); // deactivate edit task button
     updateCompletedTasksCountOnPage();
+    showRequestedTasks(localStorage.getItem("tasksSelection"));
   }
 
   function checkTask(e) {
@@ -239,4 +255,50 @@
     return 0;
   }
 
+  /* Filter Tasks Logic (Tasks Selection) */
+
+  tasksSelectionsListItems.forEach((taskSelectionItem) => {
+    taskSelectionItem.addEventListener("click", (e) => {
+      activateTaskSelection(e.target.className.replace("active","").trim());
+      showRequestedTasks(e.target.className.replace("active","").trim());
+    });
+  });
+
+  function activateTaskSelection(taskSelection) {
+    const taskSelectionItem = Array.from(tasksSelectionsListItems).filter((taskSelectionItem) => taskSelectionItem.classList.contains(taskSelection))[0];
+    tasksSelectionsListItems.forEach((taskSelectionListItem) => taskSelectionListItem.classList.remove("active"));
+    taskSelectionItem.classList.add("active");
+  }
+
+  function showRequestedTasks(taskSelection) {
+    localStorage.setItem("tasksSelection", taskSelection);
+    if(taskSelection == "all") {
+      Array.from(tasksList.children).forEach((taskElement) => taskElement.classList.remove("hidden"));
+      tasksShownElement.innerText = "All Tasks:";
+      tasksCountElement.innerText = getNoOfTasksFromLocalStorage();
+    } else if(taskSelection == "completed") {
+      Array.from(tasksList.children).forEach((taskElement) => {
+        if(isCompleted(taskElement))
+          taskElement.classList.remove("hidden");
+        else 
+          taskElement.classList.add("hidden");
+      });
+      tasksShownElement.innerText = "Completed Tasks:"
+      tasksCountElement.innerText = getNoOfCompletedTasksFromLocalStorage();
+    } else if(taskSelection == "uncompleted") {
+      Array.from(tasksList.children).forEach((taskElement) => {
+        if(!isCompleted(taskElement))
+          taskElement.classList.remove("hidden");
+        else
+          taskElement.classList.add("hidden");
+      });
+      tasksShownElement.innerText = "Uncompleted Tasks:"
+      tasksCountElement.innerText = getNoOfTasksFromLocalStorage() - getNoOfCompletedTasksFromLocalStorage();
+    }
+  }
+
+  function isCompleted(taskElement) {
+    taskTextElement = taskElement.children[0].children[1];
+    return taskTextElement.classList.contains("completed");
+  }
 })();

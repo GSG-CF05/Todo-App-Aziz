@@ -68,6 +68,12 @@
   display: inline-block;
 }
 
+.navbar .container ul li .item .item-name,
+.navbar .container ul li .item,
+.navbbar .container ul li .count  {
+  pointer-events: none;
+}
+
 /* page container styling */
 
 .page-container {
@@ -144,14 +150,22 @@
 
 .main .container .title {
   color: var(--primary-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
 }
 
 .main .container .title i {
   margin-right: 10px;
 }
 
+.main .container .title .shown-tasks {
+  transition: all 1s ease;
+  flex-grow: 1;
+}
+
 .main .container .title .count {
-  margin-left: 1rem;
+  margin-right: 2%;
 }
 
 .main .container .tasks-container {
@@ -205,7 +219,11 @@
   justify-content: space-between;
   align-items: flex-start;
   padding: 1rem;
-  transition: all 0.5s ease;
+  transition: all 1s ease;
+}
+
+.main .container .tasks-container .tasks-list .task.hidden {
+  display: none;
 }
 
 .main .container .tasks-container .tasks-list .task .task-content {
