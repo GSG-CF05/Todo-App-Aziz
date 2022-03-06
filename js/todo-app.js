@@ -43,7 +43,7 @@
 		const taskElement = document.createElement('div');
 		taskElement.classList.add('task');
 		taskElement.innerHTML = `<div class="task-content">
-                               <div class="status">
+                               <div class="status ${task.completed ? "non-active" : ""}">
                                 <i class="fa-solid fa-check ${!task.completed ? "hidden" : ""}"></i>
                                </div>
                                <div class="task-text ${task.completed ? "completed" : ""}">${task.taskName}</div>
@@ -176,11 +176,12 @@
 
   function completeTask(e) {
     const taskElement = e.target.parentElement.parentElement;
-    const editBtn = e.target.parentElement.parentElement.children[1].children[1];
-    toggleBtnStatus(editBtn);
     checkTask(e);
     updateTaskStatusInLocalStorage(taskElement.dataset.id, true);
-    
+    const editBtn = e.target.parentElement.parentElement.children[1].children[1];
+    toggleBtnStatus(editBtn);
+    const completedBtn = e.target.parentElement.parentElement.children[0].children[0];
+    toggleBtnStatus(completedBtn);
   }
 
   function checkTask(e) {
