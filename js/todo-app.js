@@ -134,15 +134,13 @@
     const taskTextField = task.firstChild.children[1];
     taskTextField.setAttribute("contenteditable", `${editable}`);
 
-    // make the cursor at the end of the task text on edit
-    const inputText = taskTextField.innerText;
-    const range = document.createRange();
+    // // make the cursor at the end of the task text on edit
     const selection = document.getSelection();
-    range.setStart(taskTextField.childNodes[0], inputText.length);
-    range.collapse(true);
+    const range = document.createRange();
     selection.removeAllRanges();
+    range.selectNodeContents(taskTextField);  
+    range.collapse(false);
     selection.addRange(range);
-
     taskTextField.focus();
   }
 
