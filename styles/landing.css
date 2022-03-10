@@ -13,21 +13,25 @@
   height: 7.5vh;
 }
 
+.header .menu {
+  flex-grow: 1;
+}
+
 .header .menu i{
   font-size: 1.4rem;
-  color: var(--primary-color);
+  color: var(--text-color);
   background-color: var(--extra-color);
   padding: 0.5rem;
   border-radius: 4px;
 }
 
 .header .donate button {
-  background-color: var(--secondary-color);
-  color: var(--primary-color);
+  background-color: var(--donate-bc);
+  color: var(--text-color);
   padding: 4px 12px;
   border-radius: 20px;
   outline: none;
-  border: 2px solid var(--secondary-color);
+  border: 2px solid var(--donate-bc);
   font-size: 1rem;
   font-weight: bold;
   display: inline-flex;
@@ -36,7 +40,7 @@
 }
 
 .header .donate button:hover {
-  border: 2px solid rgb(1, 49, 1);
+  border: 2px solid var(--text-color);
 }
 
 .header .donate button span {
@@ -57,7 +61,7 @@
 }
 
 .main .container figure {
-  margin-bottom: 5rem;
+  margin-bottom: 4rem;
 }
 
 .main .container img {
@@ -113,7 +117,7 @@
 
 .main .container figure p {
   line-height: 1.6;
-  color: var(--primary-color);
+  color: var(--text-color);
   font-weight: bold;
   font-size: 1rem;
 }
@@ -122,8 +126,8 @@
   padding: 0.8rem 1.6rem;
   border-radius: 1rem;
   outline: none;
-  border: 2px solid var(--extra-color);
-  color: var(--secondary-color);
+  border: 2.5px solid var(--extra-color);
+  color: var(--text-color);
   background-color: var(--extra-color);
   font-weight: bold;
   font-size: 1.1rem;
@@ -135,9 +139,9 @@
 }
 
 .main .container .get-started button:hover {
-  background-color: var(--secondary-color);
-  color: var(--primary-color);
-  border: 2px solid var(--primary-color);
+  background-color: var(--donate-bc);
+  color: var(--text-color);
+  border: 2.5px solid var(--text-color);
 }
 
 /* footer styling */
@@ -152,15 +156,15 @@
   gap: 10px;
   width: 100%;
   background-color: var(--extra-color);
-  color: var(--primary-color);
-  font-size: 0.84rem;
+  color: var(--text-color);
+  font-size: 0.85rem;
   font-weight: bold;
   border-top: 1px solid var(--extra-bc);
   height: 5vh;
 }
 
 .footer i {
-  color:rgb(1, 49, 1);
+  color: var(--text-color);
   padding: 8px;
 }
 

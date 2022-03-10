@@ -14,7 +14,15 @@
   --secondary-color: #37e288;
   --extra-color: rgba(196, 255, 196, 0.384);
   --extra-bc: rgba(128, 128, 128, 0.164);
-  
+  --donate-bc: #37e288;
+  --pre-color: #f5f5f5;
+  --hot-color: #e4e4e4;
+  --hotter-color: #dadada;
+  --overlay-color: #adadad;
+  --holder-color: #d5d5d5;
+
+  --invert-scale: 0%;
+
   --line-width: 0%;
   --translate-value: 40px;
 }
@@ -30,6 +38,15 @@ body {
 body.dark-mode {
   --body-bc: rgb(22, 37, 51);
   --text-color: rgb(234, 235, 236);
+  --extra-color: rgb(31, 141, 77);
+  --donate-bc: rgb(31, 141, 77);
+  --pre-color: #15202b;
+  --hot-color: #22303c;
+  --hotter-color: #15202b;
+  --overlay-color: #192734;
+  --holder-color: #757575;
+
+  --invert-scale: 100%;
   
 }
 
