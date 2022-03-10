@@ -1,7 +1,7 @@
 # Get it Done!
 
 ## Project Description
-**Get it Done!** is a mobile first to do list web app that is designed to help you manage your life more effectively. It uses a complicated machine learning model that you will never understand unless you have a PhD in mathematics.  
+**Get it Done!** is a mobile first to do list web app that is designed to help you manage your life more effectively. It supports four main features of adding, editing, removing and completing tasks.  
 
 ## User Stories
 - As a user, I should be able to add my to-do to the list and save it in local storage
