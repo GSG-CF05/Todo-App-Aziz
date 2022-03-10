@@ -5,8 +5,8 @@
   top: 0;
   left: -100%;
   height: 100vh;
-  color: var(--primary-color);
-  background-color: #f5f5f5;
+  color: var(--text-color);
+  background-color: var(--pre-color);
   border-right: 2.5px solid var(--extra-bc);
   z-index: 10;
   transition: all 1.5s ease;
@@ -17,7 +17,7 @@
 }
 
 .navbar .container {
-  margin-top: 60px;
+  margin-top: 68px;
   height: 100%;
 }
 
@@ -37,22 +37,26 @@
   gap: 4px;
   align-items: center;
   padding: 1.6rem 0.6rem;
-  color: var(--primary-color);
   font-size: 0.8rem;
   cursor: pointer;
 }
 
 .navbar .container ul li:hover {
-  background-color: rgba(255, 255, 255, 0.774);
+  background-color: var(--body-bc);
 }
 
 .navbar .container ul li.active {
-  background-color: #e4e4e4;
+  background-color: var(--hot-color);
 }
 
 .navbar .container ul li .item {
   display: flex;
   align-items: center;
+}
+
+.navbar .container img {
+  filter: invert(var(--invert-scale));
+  
 }
 
 .navbar .container .filter-tasks {
@@ -83,7 +87,7 @@
 
 /* page overlay styling */
 .page-overlay {
-  background-color: #adadad;
+  background-color: var(--overlay-color);
   width: 100%;
   height: 100%;
   position: absolute;
@@ -116,7 +120,7 @@
 
 .header .menu i {
   font-size: 1.4rem;
-  color: var(--primary-color);
+  color: var(--text-color);
   background-color: var(--extra-color);
   padding: 0.5rem;
   border-radius: 4px;
@@ -131,7 +135,7 @@
 }
 
 .header .logo .go-home span {
-  color: var(--primary-color)
+  color: var(--text-color)
 }
 
 .header .logo span .done {
@@ -149,7 +153,7 @@
 }
 
 .main .container .title {
-  color: var(--primary-color);
+  color: var(--text-color);
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -160,7 +164,7 @@
 }
 
 .main .container .title .shown-tasks {
-  transition: all 1s ease;
+  transition: all 0.5 ease;
   flex-grow: 1;
 }
 
@@ -176,7 +180,7 @@
 .main .container .tasks-container .form .task-adder {
   padding: 1rem;
   border: 1px solid var(--extra-bc);
-  background-color: #f5f5f5;
+  background-color: var(--pre-color);
   border-radius: 5px;
   display: flex;
   align-items: baseline;
@@ -185,8 +189,8 @@
 
 .main .container .tasks-container .form .task-adder .add-task-btn {
   border: none;
-  background-color: #f5f5f5;
-  color: var(--primary-color);
+  background-color: var(--pre-color);
+  color: var(--text-color);
   font-size: 1.2rem;
 }
 
@@ -195,15 +199,15 @@
 }
 
 .main .container .tasks-container .form .task-adder input {
-  background-color: #f5f5f5;
+  background-color: var(--pre-color);
   border: none;
   width: 100%;
-  color: var(--primary-color);
+  color: var(--text-color);
   font-size: 1.2rem;
 }
 
 .main .container .tasks-container .form .task-adder input::placeholder {
-  color: #d5d5d5;
+  color: var(--holder-color);
 }
 
 .main .container .tasks-container .form .task-adder input:focus {
@@ -213,7 +217,7 @@
 
 .main .container .tasks-container .tasks-list .task {
   margin-top: 0.5rem;
-  border-bottom: 1px solid #e4e4e4;
+  border-bottom: 1px solid var(--hot-color);
   font-size: 1rem;
   display: flex;
   justify-content: space-between;
@@ -232,7 +236,8 @@
 
 .main .container .tasks-container .tasks-list .task .task-content .status,
 .main .container .tasks-container .tasks-list .task .task-controls .edit {
-  transition: all 1s ease;
+  transition: all 0.5s ease;
+  margin-right: 4px;
 }
 
 .main .container .tasks-container .tasks-list .task .task-content .task-text.completed {
@@ -243,9 +248,10 @@
 .main .container .tasks-container .tasks-list .task .task-content .task-text {
   flex-basis: 96%;
   word-break: break-all;
+  color: var(--text-color);
   border: none;
   outline: none;
-  transition: all 1s ease;
+  transition: all 0.5s ease;
 }
 
 .main .container .tasks-container .tasks-list .task .task-controls i,
@@ -256,14 +262,14 @@
 }
 
 .main .container .tasks-container .tasks-list .task .task-controls .save {
-  background-color: #e4e4e4;
+  background-color: var(--hot-color);
   border-radius: 40px;
   padding: 3px 7px;
   transition: all 0.6s ease;
 }
 
 .main .container .tasks-container .tasks-list .task .task-controls .save:hover {
-  background-color: #dadada;
+  background-color: var(--hotter-color);
 }
 
 .main .container .tasks-container .tasks-list .task .task-controls .save.hidden, 
@@ -275,6 +281,7 @@
   display: flex;
   gap: 0.5rem;
   align-items: center;
+  color: var(--text-color);
 }
 
 .main .container .tasks-container .tasks-list .task .task-content {
@@ -337,12 +344,12 @@
   .navbar:hover .container .filter-tasks h3 {
     opacity: 1;
     transition: 0.5s;
-    transition-delay: 1s;
+    transition-delay: 0.8s;
   }
 
   .navbar:hover .container .filter-tasks img {
     order: 1;
-    transition-delay: 1s;
+    transition-delay: 0.8s;
   }
 
   .navbar .container .filter-tasks {
