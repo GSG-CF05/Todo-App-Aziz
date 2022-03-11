@@ -35,7 +35,7 @@
 
 	addTaskBtn.addEventListener('click', (e) => {
 		e.preventDefault();
-		if (inputField.value) {
+		if (inputField.value.trim()) {
 			const taskName = inputField.value;
 			inputField.value = '';
 			addTask(taskName);
